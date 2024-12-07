@@ -1,7 +1,7 @@
 [project]
 name = "collaborate-sheets"
 version = "0.1.0"
-description = "Add your description here"
+description = "Programming language design final project"
 readme = "README.md"
 authors = [
 	{ name = "hermeschen1116", email = "108386417+hermeschen1116@users.noreply.github.com" },
@@ -16,3 +16,12 @@ collaborate-sheets = "collaborate_sheets:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+	"commitizen>=4.1.0",
+	"pip>=24.3.1",
+	"pre-commit>=4.0.1",
+	"setuptools>=75.6.0",
+	"wheel>=0.45.1",
+]
