@@ -1,5 +1,4 @@
-from src.collaborate_sheets.Database import Database
-
+from collaborate_sheets.Database import Database
 
 database: Database = Database()
 
@@ -16,32 +15,32 @@ while True:
 ----------------------------------
 	""")
 
-	menu_key: int = int(input("> "))
+	menu_key: str = input("> ")
 
-	match(menu_key):
-		case 1:
-			user_name: str = input("> ")
-			# TODO: function to create a user
-		case 2:
-			user_name, sheet_title = input("> ").split(' ')
-			# TODO: function to create a sheet
-		case 3:
-			user_name, sheet_title = input("> ").split(' ')
-			# TODO: function to print a sheet
-		case 4:
-			user_name, sheet_title = input("> ").split(' ')
-			# TODO: function to modify a sheet
-		case 5:
-			user_name, sheet_title, access_right = input("> ").split(' ')
-			# TODO: function to modify access right
-		case 6:
-			user_name, sheet_title, collaborator_name = input("> ").split(' ')
-			# TODO: function to add collaborator
-		case 7:
+	match menu_key:
+		case "1":
+			user_name: str = input("> ").strip()
+			database.create_user(user_name)
+		case "2":
+			user_name, sheet_title = input("> ").strip().split(" ")
+			database.create_sheet(user_name, sheet_title)
+		case "3":
+			user_name, sheet_title = input("> ").strip().split(" ")
+			database.print_sheet(user_name, sheet_title)
+		case "4":
+			user_name, sheet_title = input("> ").strip().split(" ")
+			database.edit_sheet(user_name, sheet_title)
+		case "5":
+			user_name, sheet_title = input("> ").strip().split(" ")
+			database.change_sheet_accessibility(user_name, sheet_title)
+		case "6":
+			user_name, sheet_title = input("> ").strip().split(" ")
+			database.add_sheet_collaborator(user_name, sheet_title)
+		case "7":
 			print("Goodbye!")
 			break
 		case _:
-			print("Invalid menu key.")
+			print("Invalid menu key.\n")
 			continue
 
 	print()
