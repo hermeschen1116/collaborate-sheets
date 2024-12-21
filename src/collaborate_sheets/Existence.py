@@ -1,4 +1,3 @@
-# private
 class Existance(Enum):
  """
     formate:
