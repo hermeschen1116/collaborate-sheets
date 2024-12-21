@@ -1,5 +1,5 @@
 class Existance(Enum):
- """
+ 	"""
     formate:
 	    Each type occupies 2 bits
 	        signinific bit makes function cares about it
@@ -17,8 +17,8 @@ class Existance(Enum):
         Use TRUE or FALSE as args
         e.g. checkExist(TRUE) if you wish this option exists
 	"""
-	CARE   = 0  # for detect 
-	TRUE   = 0  # for funtcion call
+	CARE   = 0
+	TRUE   = 0
 	FALSE  = 0
 	SHOULD = 0
 
