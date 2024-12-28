@@ -1,6 +1,7 @@
 from enum import Enum
 
-class Existance(Enum):
+
+class Existence:
     """
     formate:
         Each type occupies 2 bits
@@ -24,19 +25,22 @@ class Existance(Enum):
     FALSE  = 0
     SHOULD = 0
 
-class USER(Existance):
+
+class USER(Existence):
     CARE   = 0b10
     TRUE   = 0b11
     FALSE  = 0b10
     SHOULD = 0b01
 
-class SHEET(Existance):
+
+class SHEET(Existence):
     CARE   = 0b10 * 4
     TRUE   = 0b11 * 4
     FALSE  = 0b10 * 4
     SHOULD = 0b01 * 4
-	
-class ACCESS(Existance):
+
+# not used
+class ACCESS(Existence):
     CARE   = 0b10 * 16
     TRUE   = 0b11 * 16
     FALSE  = 0b10 * 16
