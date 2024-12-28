@@ -1,19 +1,23 @@
 from typing import Optional
 from collaborate_sheets.Database import Database
 
-def checkValid(info: str, tokenNum: int=2) -> tuple[Optional[str]]:
+
+def checkValid(info: str, tokenNum: int=2) -> list[Optional[str]]:
 	"""
-	Check if input, splited by space, is same of tokenNum.
+	Check if input, split by space, is same of tokenNum.
 	:param info: string printed before waiting for input
 	:returns: list of given token, contains None if have error.
 	"""
 	inp = input(info).strip().split()
 	if tokenNum == 2 and len(inp) != 2:
 		print("Invalid input, make sure both user name and sheet name don't contain space.")
-		return None, None
+		return [None, None]
 	elif tokenNum == 1 and len(inp) != 1:
-		print("name should not contain space.")
-		return None,
+		print("Name should not contain space.")
+		return [None]
+	elif tokenNum != len(inp):
+		print(f"Token number should be {tokenNum}, get {len(inp)}")
+		return [None for c in range(tokenNum)]
 	return inp
 
 
