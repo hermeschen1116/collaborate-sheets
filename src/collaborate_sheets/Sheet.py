@@ -6,15 +6,33 @@ class Accessibility(Enum):
 	EDITABLE = True
 	READONLY = False
 
+# change following 2 lines to make users can be notified
+_can_notify = False
+_user_type = str
 
 class Sheet:
 	def __init__(self, owner: str, title: str) -> None:
 		self.__sheet: List[List[float]] = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 		self.__title: str = title
-		self.__owner: str = owner
+		self.__owner: _user_type = owner
 		self.__accessibility: Accessibility = Accessibility.EDITABLE
-		self.__collaborators: List[str] = []
+		self.__collaborators: List[_user_type] = []
 
+	def _notify_all(self, *args, **kwargs) -> None:
+		"""
+		prototype function for Observer Pattern.
+
+		"""
+		if not _can_notify:
+			return
+		try:
+			self.__owner.update(*args, **kwargs)
+			for user in self.__collaborators:
+				user.update(*args, **kwargs)
+		except Exception as e:
+			print("notify faild")
+			print(e)
+	
 	@property
 	def title(self) -> str:
 		return self.__title
@@ -39,6 +57,7 @@ class Sheet:
 			return False
 
 		self.__sheet[row][column] = value
+		self._notify_all()
 		return True
 
 	def change_accessibility(self, accessibility: Accessibility) -> None:
